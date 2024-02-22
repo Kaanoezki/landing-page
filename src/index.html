@@ -44,9 +44,6 @@
             }, { passive: false });
         });
      </script>
-    <style>
-        
-    </style>
      
 </head>
 <body>    
@@ -59,18 +56,28 @@
         Willkommen auf meiner persönlichen Portfolio-Seite! diese Seite wir wird noch bearbeitet. KLICK HIER um fortzufahren
          </div>
         </div>
-
+        <script>
+            function closeOverlay() {
+                var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        
+                if (screenWidth < 1000) {
+                    // Schließe das Overlay nur, wenn die Bildschirmbreite unter 1000px liegt
+                    document.getElementById("overlay").style.display = "none";
+                    document.getElementById("speechBubble").style.display = "none";
+                }
+            }
+            </script>
         <!--sprechbubble zwischen overlay und three js scene-->
         <div id="overlay" onclick="closeOverlay()"></div>
         <div id="speechBubble" class="headliner ">
             <center>  Mausrad runter scrollen 
             </center>
         </div>
-        
+ 
     <div id="container">
-        <div id="#a" class="snap"></div>
-        <div id="containerbox" class="BG-color1 left-border  ">
-                <div id="txt-left" class=" text-container-1  headliner mH">
+        <div id="a" class="snap"></div>
+        <div id="containerbox" class="BG-color1 ">
+            <div id="txt-left" class=" text-container-1 headliner mH">
                     Hi! Ich freue mich, Ihnen mein Interesse und meine Leidenschaft für die Softwareentwicklung vorstellen zu dürfen. 
                     Derzeit absolviere ich eine Umschulung zum Softwareentwickler, 
                     in der ich mein Wissen im Bereich Frontend JavaScript vertiefe. 
@@ -82,8 +89,7 @@
                       konnte ich meine Kenntnisse in der 3D-Webentwicklung vertiefen, was mir ermöglicht hat,
                    innovative und immersive Lösungen zu schaffen.
                 </div>
-                <div class="img-container" style="background-image: url('../assets/bilder/img1.jpg')"></div>
-                <div class="img-container img1"></div>,
+                <div class="img-container img1"></div>
         </div>
         
         <div class="snap"></div>
@@ -92,7 +98,7 @@
             <div class="layer b "></div>
         <div class="snap "></div>
        
-        <div id="containerbox" class="BG-color2 left-border ">
+        <div id="containerbox" class="BG-color2">
                 <div class="img-container img5"></div>
                 <div id="txt-right" class=" text-container-1 headliner mH">
                    
@@ -104,7 +110,7 @@
             </div>
         </div>
         <div class="snap "></div>
-        <div id="containerbox" class="BG-color3 left-border ">
+        <div id="containerbox" class="BG-color3 ">
             <div id="txt-left" class=" text-container-1 headliner mH">
                 But I must explain to you how all 
                 this mistaken idea of denouncing pleasure and praising pain 
@@ -115,9 +121,9 @@
             <div class="img-container img4"></div>
         </div>
         <div class="snap"></div>
-        <div id="containerbox" class="BG-color1 left-border ">
+        <div id="containerbox" class="BG-color1 ">
             <div class="img-container img3"></div>
-            <div  id="txt-right" class=" text-container-1 headliner mH">
+            <div  id="txt-right" class=" text-container-1 headliner ">
                 But I must explain to you how all 
                 this mistaken idea of denouncing pleasure and praising pain 
                 was born and I will give you a complete account of the system,
@@ -126,8 +132,8 @@
             </div>
         </div>
         <div class="snap"></div>
-        <div id="containerbox" class="BG-color2 left-border ">
-            <div id="txt-left" class=" text-container-1 headliner mH">
+        <div id="containerbox" class="BG-color2">
+            <div id="txt-left" class=" text-container-1 headliner">
                 But I must explain to you how all 
                 this mistaken idea of denouncing pleasure and praising pain 
                 was born and I will give you a complete account of the system,
@@ -137,16 +143,16 @@
             <div class="img-container img7"></div>
             
         </div>
-       
-        <div id="containerbox-footer" class="BG-color2   text-container-1 headliner-footer mH">
-            <div class="snap"></div>
-            <div class="container-contact">
-                <div class="mail-img img9"></div>
-                <div class="contact ">Kontakt:</div>
-                <div class="email "> Kaan.oe.business@gmail.com</div>
-                <div class="tel "> 0177/ 96 88 341</div>
-                <div class="linkedin ">www.linkedin.com/in/kaan-özkürkcü-4984bb1a2</div>
+        <div class="snap"></div>
+        <div id="containerbox" class="BG-color3 text-footer headliner">
+            <center>
+                <b><div>Kontakt:</b >
+                <div> Kaan.oe.business@gmail.com</div>
+                <div> 0177/ 96 88 341</div>
+                <div>www.linkedin.com/in/kaan-özkürkcü-4984bb1a2</div>
+                </center>
             </div>
+        </div>
          </div>
    
     
@@ -163,7 +169,6 @@
     <!--navbar-->
     <nav>
         <nav class="textresizer ">
-            
             <ul class="navbar container ">
                 <li class="a"><a href="#layer1" onclick="scrollToSection('layer1')">Three-js scene</a></li>
                 <li class="b"><a href="#threejs-container" onclick="scrollToSection('threejs-container')">Three-js scene</a></li>
@@ -370,7 +375,7 @@ updateRotation();
         document.addEventListener('mousemove', (event) => {
         mouseX = event.clientX;
         mouseY = event.clientY;
-            updateTextContent();
+         
         });
     });
         //lerp function
@@ -443,34 +448,5 @@ updateRotation();
                 windowResize();
                 initObjects();
     </script>
-        <script>//ergänzung für den css textinhalt änderung(innerhtml)
-            // Funktion zum Aktualisieren des Textinhalts basierend auf der Bildschirmbreite
-            function updateTextContent() {
-    var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    var layer1 = document.getElementById('layer1');
-
-     if (screenWidth <= 600 && window.innerHeight <= 600) {
-        layer1.innerText = 'If you dont use a smaller Device, please change the window-size for a better experience !';
-        layer1.style.color = 'red';
-        layer1.style.position = 'fixed';
-        layer1.style.top = '0%';
-        layer1.style.left = '0%';
-        layer1.style.transform = 'translate(-50%, -50%)';
-        layer1.style.zIndex = '10000'; 
-  
-     
-    } else {
-        layer1.innerText = '';
-        layer1.style.position = '';
-        layer1.style.top = '';
-        layer1.style.left = '';
-        layer1.style.transform = '';
-        layer1.style.zIndex = ''; 
-      
-    } 
-}
-
-    </script>
-    
 </body>
 </html>

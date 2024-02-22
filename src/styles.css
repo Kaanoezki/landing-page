@@ -18,9 +18,7 @@
         scroll-snap-align: start;
     }
 
-    .mH{
-        min-width: 0;
-    }
+ 
 
     #container {
          
@@ -33,17 +31,12 @@
         overflow-x:hidden;
         scroll-behavior: smooth;
         background-color: #8e8e90;
-        
-
-       
-
     }
 
 
     #threejs-container {
-        
         position: relative;
-        z-index: 10; /* Stellen Sie sicher, dass der Three.js-Container unter dem Overlay liegt */
+        z-index: 10;
     }
     #overlay-container {
         position: absolute;
@@ -53,7 +46,7 @@
         height: 100%;
         font-family: Titillium Web;
     
-        z-index: 50; /* Stellen Sie sicher, dass das Overlay über dem Three.js-Container liegt */
+        z-index: 50; 
         display: flex;
         justify-content: center;
         align-items: center;
@@ -72,7 +65,7 @@
 
     #background2{
         font-size: 150px;
-        display: fixed;
+        position:fixed;
         justify-content: center;
         align-items: center;
         position: fixed;
@@ -117,14 +110,14 @@
     }
         
     #speechBubble{
-        color: white;
+        color: rgb(255, 0, 0);
         background-color: #2e2e2e;
     }
 
     .parent {
         overflow: scroll;
         height: 100vh;
-        scroll-snap-points-y: repeat(100vh);
+ 
         scroll-snap-type: y mandatory;
     }
     section {
@@ -134,69 +127,46 @@
         position: relative;
     }
     .img-container{
-        flex:1;
+        flex:2;
         margin-left:0cm;
         background-size: contain;
     }
-    .border-circle{
-        
-        border-style: solid;
-        background-color: #ffe4b5;
-        border-color: transparent;
-        z-index: 10;
-        background-image: 
-        linear-gradient(to bottom, #ffffff00,moccasin),
-    
-        
-    
-    }
-
 
     #txt-left{
+        margin-right: 5%;
+        margin-left: 5%;  
         margin-left: 10%;
+        margin-block-end: 10px; 
+        writing-mode: horizontal-tb;
+      
     }
+
     #txt-right{
         margin-right: 5%;
         margin-left: 5%;  
+        margin-left: 10%;
+        margin-block-end: 10px; 
+        writing-mode: horizontal-tb;
     }
-    #txt-center{
-        margin-right: 5%;
-        margin-left: 50%;  
-    }
-
-
-
-    /* .left-border{
-        border-bottom-left-radius:2cm;
-        border-top-left-radius: 2cm;
-    } */
-
 
     #containerbox{
         object-fit: cover;
         display: flex;
-        /* flex-grow: 1;
-        flex-shrink: 1; */
         align-items: center;
         margin-bottom: 15%;
         position: relative;
         transform: none;
-        justify-content:space-evenly;
+        justify-content:center;
         height: 100%;
         min-height: 100vh;
-        
-        background-size: contain;
+
         background-repeat: no-repeat;
         background-position: center center;
 
         width: 100vw;
         max-block-size: 40%;
-    
         transition: 1s ease-in-out;
-        /* transform:(-0%); */
         z-index: 1;
-        /* border-bottom-left-radius: 2cm;
-        border-top-left-radius: 2cm; */
         border-style:solid;
         border-color:white; 
     }
@@ -204,13 +174,9 @@
     /* mistyrose 	#ffe4e1
         lightcyan 	#e0ffff
         moccasin 	#ffe4b5
-        
         Rose Gold: #bd8c7d
-
         Soft Gold: #d1bfa7
-
         Silver: #8e8e90
-
         Onyx: #49494b
     */
     .BG-color1{
@@ -221,30 +187,30 @@
         background-color: #8e8e90;
     }
     .BG-color3{
-        background-color: #49494b;
+        background-color: #d1bfa7
     }
 
-    #containerbox:hover{
-        border-color: #2e2e2e;
-    
+     #containerbox{
+        flex-direction: row;
+        margin-right: 50px;
     }
 
 
     .headliner{
         font-family: 'Roboto Slab', sans-serif;
-        font-size: 2.8vh;
+        font-size: 1.0em;
         /* Der Text wird transparent gemacht */
         letter-spacing: -0.01rem;
     }
 
-    .headliner-footer{
+    .text-footer{
         font-family: 'Roboto Slab', sans-serif;
-        font-size: 4vh;
-        /* Der Text wird transparent gemacht */
+        font-size: 2rem;
+        word-wrap:break-word;
+        overflow: auto; 
         letter-spacing: -0.01rem;
     }
 
-  
         
     canvas {
     
@@ -279,11 +245,10 @@
     
     .text-container-1{
         display:flex;
-        flex:1;
+        flex:2;
         align-items: center;
         align-self: center;
         transition:  1s ease-in-out;
-        
         -webkit-text-stroke: 1px #2e2e2e; /* Hier wird der Umriss erstellt */
     }
  
@@ -291,9 +256,7 @@
     .invisble{
         visibility: hidden;
     }
-    p{
-        margin:50cm,
-    }
+   
 
     .hidden{
         visibility: hidden;
@@ -304,9 +267,6 @@
     .img-container{
         display: flex;
         justify-content: start;
-       
-    
-    
 
     }
     .parallaxmagic{
@@ -339,10 +299,13 @@
         background-image: url('/assets/bilder/icon\ \(2\).jpg');
         background-repeat: no-repeat;
         background-position: center center;
+       
         width: 50%;
         height: 50%;
         transition: 1s ease-in-out;
         z-index: 1;
+
+        border-color:white; 
 
         --f: .05; /* the parallax factor (the smaller the better) */
         --r: 10px; /* radius */
@@ -484,28 +447,17 @@
         opacity: 0;
         pointer-events: none; /* Deaktiviert Klicks, wenn das Div verschwunden ist */
     }
-    #containerbox-footer{
-        justify-content: space-around;
-        object-fit: cover;
-        display: flex;
-        align-items: center;
-        margin-top: 15%;
-        position: relative;
-        transform: none;
-        height: 100%;
-        min-height: 100vh;
-        background-size: 100% 100%; 
-        background-repeat: no-repeat;
-        background-position: center center;
-    
-        width: 100%;
-        transition: 1s ease-in-out;
-        /* transform:(-0%); */
-        z-index: 1;
-        /* border-bottom-left-radius: 2cm;
-        border-top-left-radius: 2cm; */
-        border-style:solid;
-        border-color:white; 
+
+    .txt-right{
+        font-size:5em;
+        margin-right: 20%;
+    }
+
+
+    .txt-left{
+        font-size: 2em;
+        margin-top: 5em;
+ 
     }
 
     .container-contact {
@@ -519,64 +471,66 @@
         text-align:center;
     }
       
-      @media (min-width: 600px) {
-        .container-contact {
-          justify-content: space-between;
-        }
-      }
-      
-      
-      .contact { grid-area: contact; }
-      
-      .tel { grid-area: tel; }
-      
-      .email { grid-area: email; }
-      
-      .linkedin { grid-area: linkedin; }
-      
-      .mail-img { grid-area: mail-img; }
-      
-
+ 
     /*@media*/
     /*smaller dives*/
 
+    @media (min-width: 800px) { 
+    .headliner{
+        font-size: 1.2rem;
+        }  
+    }
+    @media (min-width: 1200px) { 
+        .headliner{
+            font-size: 1.3rem;
+            }  
+        }
+
+
     @media (max-width: 600px) {
+        #containerbox{
+            flex-direction: column;
+            margin-right: 50px;
+        }
+        
+        #txt-left{
+        
+            font-size: 0.8em;
+            margin-right: 20%;
+         }
+         #txt-right{
+     
+            font-size: 1em;
+            margin-right: 20%;
+         }
+
+
+        .img-container{
+            flex:4;
+            order:-1;
+            margin: 1em;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+
+        }
+
+
+     
+
+        .text-container-1{
+            -webkit-text-stroke: 0.5px #2e2e2e;
+            font-size: clamp(16px, 4vw, 36px);
+        }
+        
     
+
+        .img1{
+            height: 40%;
+            
+        }
+
         .layer1{
             transition: all 5s cubic-bezier(0.075, 0.81, 0.165, 1);
         }
-        .navbar .a,
-        .navbar .b,
-        .navbar .c,
-        .navbar .d{
-            font-size: xx-small;
-        }
-        .v { grid-area: v;
-            writing-mode: vertical-rl;
-            
-            font-size: large;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color:  #62fff5;
-        }
-        .navbar .a:hover,
-        .navbar .b:hover,
-        .navbar .c:hover,
-        .navbar .d:hover {
-            background-color: #2e2e2e(0, 0, 0);
-            color: red;
-            font-size: x-small;
-            box-shadow: 0 0 5px red;
-            text-shadow: 0 0 5px red;
-            transition: all 1s cubic-bezier(0.075, 0.81, 0.165, 1);
-            }
-    
-        }
-    
-        @media screen and (max-height: 51%) {
-            .trapezoid {
-                transform: none;
-            }
-        }
+
+    }
