@@ -7,8 +7,9 @@
 
     <!--css-->
 
-    <link rel="stylesheet" type="text/css" href="styles.css" defer>
+    <link rel="stylesheet" type="text/css" href="styles.css" >
     <link rel="stylesheet" type="text/css" href="navbar.css">
+    <link rel="stylesheet" type="text/css" href="backgroundanim.css">
     <title>Bewerbung</title>
     <!--fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=wap" rel="stylesheet">
@@ -17,39 +18,58 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
-    <!-- snap scroll not smooth yet! -->    
     <script>
+        
     function disappearDiv() {
     var div = document.querySelector('.disappearing-div');
     div.classList.add('disappeared');
     }
     document.addEventListener("DOMContentLoaded", function () {
-            console.log("DOMContentLoaded event fired");
-            const container = document.body;
-            const sections = document.querySelectorAll(".snap");
+    console.log("DOMContentLoaded event fired");
+    const container = document.body;
+    const sections = document.querySelectorAll(".snap");
 
-            let currentIndex = 0;
+    let currentIndex = 0;
+    let startY;
 
-            container.addEventListener("wheel", function (event) {
-                console.log("Mouse wheel event");
+    container.addEventListener("wheel", handleScroll, { passive: false });
 
-                // Berechne den Index des nächsten Abschnitts
-                currentIndex = (currentIndex + (event.deltaY > 0 ? 1 : -1) + sections.length) % sections.length;
+    container.addEventListener("touchstart", (event) => {
+        startY = event.touches[0].clientY;
+    });
 
-                // Scrolle zum Abschnitt mit Smooth-Scrolling
-                sections[currentIndex].scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+    container.addEventListener("touchmove", (event) => {
+        const deltaY = event.touches[0].clientY - startY;
 
-                // Verhindere das Standard-Scrollverhalten, um Doppelscrollen zu vermeiden
-                event.preventDefault();
-            }, { passive: false });
-        });
+        // Wenn Sie sich am Anfang oder Ende der Seite befinden und in die entsprechende Richtung scrollen
+        if ((currentIndex === 0 && deltaY > 0) || (currentIndex === sections.length - 1 && deltaY < 0)) {
+            return;
+        }
+
+        handleScroll({ deltaY });
+        startY = event.touches[0].clientY;
+    });
+function handleScroll(event) {
+    console.log("Scroll event");
+
+    // Berechne den Index des nächsten Abschnitts
+    currentIndex = (currentIndex + (event.deltaY > 0 ? 1 : -1) + sections.length) % sections.length;
+
+    // Scrolle zum Abschnitt mit Smooth-Scrolling
+    sections[currentIndex].scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+
+    // Verhindere das Standard-Scrollverhalten, um Doppelscrollen zu vermeiden
+    event.preventDefault();
+}
+
+});
+
      </script>
      
 </head>
 <body>    
-    <div id="background2" > 
-        LONG TEXT HERE!<br>
-      
+    <div class="bglayer2">
+    </div>
     </div>
     <div id="overlay-container"class="disappearing-div" onclick="disappearDiv(this)">
         <div class=" text-container-2 ">
@@ -73,108 +93,143 @@
             <center>  Mausrad runter scrollen 
             </center>
         </div>
- 
+        
+        <div class="background">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
     <div id="container">
         <div id="a" class="snap"></div>
         <div id="containerbox" class="BG-color1 ">
-            <div id="txt-left" class=" text-container-1 headliner mH">
+            
+            <div id="txt-1" class=" text-container-1 headliner mH">
                     Hi! Ich freue mich, Ihnen mein Interesse und meine Leidenschaft für die Softwareentwicklung vorstellen zu dürfen. 
                     Derzeit absolviere ich eine Umschulung zum Softwareentwickler, 
-                    in der ich mein Wissen im Bereich Frontend JavaScript vertiefe. 
                     Die Motivation für diesen beruflichen Wechsel sowie meine bisherigen Erfahrungen möchte ich Ihnen gerne näherbringen.
-                    Die Entscheidung, mich auf die Frontend-Entwicklung zu fokussieren,
-                    gründet sich in meiner Begeisterung für
-                     die Nutzererfahrung und die Gestaltung ansprechender 
-                     Benutzeroberflächen. Durch die intensive Beschäftigung mit JavaScript und Three.js
-                      konnte ich meine Kenntnisse in der 3D-Webentwicklung vertiefen, was mir ermöglicht hat,
-                   innovative und immersive Lösungen zu schaffen.
                 </div>
                 <div class="img-container img1"></div>
         </div>
-        
-        <div class="snap"></div>
+        <div  class="snap"></div>
+        <div id="containerbox" class="BG-color2 mH">
+            <div class="bg-responsive1 animate"></div>
+            <div class="img-container img10"></div>
+            <div id="txt-1" class=" text-container-1 headliner mH">
+                Die Entscheidung, mich auf die Frontend-Entwicklung zu fokussieren,
+                 resultiert aus meiner Begeisterung für die Nutzererfahrung und die Gestaltung ansprechender Benutzeroberflächen.
+                  Nach intensiver Beschäftigung mit C# habe ich meine Kenntnisse in der 3D-Webentwicklung vertieft, 
+                  wodurch ich innovative und immersive Lösungen schaffen konnte. Die Erfahrungen mit C# führten mich zu Unity,
+                   und nun interessiere ich mich leidenschaftlich für die Frontend-Entwicklung mit JavaScript,
+                    um mein Wissen und meine Fähigkeiten weiter auszubauen.
+                </div>
+        </div>
+        <div  class="snap"></div>
+        <div id="containerbox" class="BG-color3 ">
+            <div id="txt-1" class=" text-container-1 headliner mH">
+                Im nachfolgenden Abschnitt erhalten Sie ein konkretes Beispiel für die Verwendung von Three.js.
+                In diesem Szenario wurde die Szenerie mithilfe von Blender modelliert und dann erfolgreich in Three.js
+                integriert. Diese nahtlose Integration ermöglicht eine reibungslose Übertragung von 3D-Modellen 
+                zwischen den beiden Plattformen, wodurch sich umfassende Gestaltungsmöglichkeiten eröffnen.
+                </div>
+                <div class="img-container img11"></div>
+        </div>
+        <div id="b" class="snap"></div>
             <div id="threejs-container" class="img-container" onclick="onClick(event)"></div>
             <div id="layer1"></div>
             <div class="layer b "></div>
-        <div class="snap "></div>
-       
-        <div id="containerbox" class="BG-color2">
-                <div class="img-container img5"></div>
-                <div id="txt-right" class=" text-container-1 headliner mH">
-                   
-                   Mein Ziel ist es, mich in einem innovativen Unternehmen weiterzuentwickeln, 
-                    das Wert auf kreative Lösungsansätze und eine hohe Qualitätsstandards legt.
-                     Die Möglichkeit, mit modernen Technologien und Werkzeugen wie VS Code meine 
-                     Fähigkeiten auszubauen und an anspruchsvollen Projekten teilzunehmen,
-                    ist für mich von hoher Bedeutung.
-            </div>
-        </div>
-        <div class="snap "></div>
-        <div id="containerbox" class="BG-color3 ">
-            <div id="txt-left" class=" text-container-1 headliner mH">
-                But I must explain to you how all 
-                this mistaken idea of denouncing pleasure and praising pain 
-                was born and I will give you a complete account of the system,
-                and expound the actual teachings of the great explorer of the 
-                truth, the master-builder of human happiness. No one rejects, 
-            </div>
-            <div class="img-container img4"></div>
-        </div>
-        <div class="snap"></div>
-        <div id="containerbox" class="BG-color1 ">
-            <div class="img-container img3"></div>
-            <div  id="txt-right" class=" text-container-1 headliner ">
-                But I must explain to you how all 
-                this mistaken idea of denouncing pleasure and praising pain 
-                was born and I will give you a complete account of the system,
-                and expound the actual teachings of the great explorer of the 
-                truth, the master-builder of human happiness. No one rejects, 
-            </div>
-        </div>
-        <div class="snap"></div>
-        <div id="containerbox" class="BG-color2">
-            <div id="txt-left" class=" text-container-1 headliner">
-                But I must explain to you how all 
-                this mistaken idea of denouncing pleasure and praising pain 
-                was born and I will give you a complete account of the system,
-                and expound the actual teachings of the great explorer of the 
-                truth, the master-builder of human happiness. No one rejects, 
-            </div>
-            <div class="img-container img7"></div>
             
+        <div id="c" class="snap "></div>
+        <div id="containerbox" class="BG-color2">
+            <div class="bg-dots animate2"></div>
+            <div class="img-container img5"></div>
+            <div id="txt-1" class=" text-container-1 headliner mH ">
+                Während meines Praktikums bei VisionMe GmbH in Hannover entwickelte ich das "Asset Placer Tool" unter Verwendung der
+                 .NET Framework Library und der Unity 3D Engine. Dieses Tool ermöglicht genaues
+                  Platzieren von 3D-Objekten über ein benutzerfreundliches Interface, 
+                  Die Erfahrungen, die ich dabei gesammelt habe, haben meine Fähigkeiten in der Schnittstelle zwischen 
+                  .NET und Unity 3D erweitert. Jetzt strebe ich an, diese Kenntnisse in einem neuen Unternehmen einzubringen und 
+                  meine Expertise im Bereich der 3D-Entwicklung und Programmierung weiter auszubauen.
+        </div>
+    </div>
+        <div id="d" class="snap "></div>
+        <div id="containerbox" class="BG-color1 ">
+            <div id="txt-1" class=" text-container-1 headliner mH">
+                Vor meiner Umschulung absolvierte ich ein Game Design Studium (design hochschule Vitruvious) mit Schwerpunkt auf 3D-Design 
+                . Währenddessen sammelte ich Erfahrungen in Feedback Loops, design thinking und Gamification,
+                 insbesondere im Bereich von Responsive Design.
+                  Diese Kenntnisse bilden eine wertvolle ergänzung für meine jetzige Ausbildung in der Softwareentwicklung.
+            </div>
+            <div class="img-container img6"></div>
         </div>
         <div class="snap"></div>
-        <div id="containerbox" class="BG-color3 text-footer headliner">
-            <center>
-                <b><div>Kontakt:</b >
-                <div> Kaan.oe.business@gmail.com</div>
-                <div> 0177/ 96 88 341</div>
-                <div>www.linkedin.com/in/kaan-özkürkcü-4984bb1a2</div>
+        <div id="containerbox" class="BG-color3 ">
+            <div class="img-container img4"></div>
+            <div  id="txt-1" class=" text-container-1 headliner ">
+                Ich freue mich darauf, 
+                meine Begeisterung für Technologien in Ihrer Firma als Junior Developer
+                einzubringen. Weitere Informationen und meine Kontaktdaten
+                finden Sie im nächsten Abschnitt. 
+            </div>
+        </div>
+        <div id="e" class="snap "></div>
+        <div id="containerbox" class="BG-color1 ">
+            <div class="split-background animate1"> </div>
+            <div class=" square-container ">
+                <center>
+                    <b>Kontakt:</b>
+                    <div >Kaan.oe.business@gmail.com</div>
+                    <div>tel:0177/ 96 88 341</div>
+                    <a href="https://www.linkedin.com/in/kaan-özkürkcü-4984bb1a2">www.linkedin.com/
+                 in/kaan-özkürkcü
+                  -4984bb1a2</a>
                 </center>
             </div>
         </div>
-         </div>
-   
-    
-    
+      
+  
     <script>
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            window.scrollTo({
-                top: section.offsetTop,
-                behavior: 'smooth'
-            });
-        }
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    
+    // Überprüfen Sie, ob das Element vorhanden ist, um Fehler zu vermeiden
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+    
     </script>
     <!--navbar-->
     <nav>
         <nav class="textresizer ">
             <ul class="navbar container ">
-                <li class="a"><a href="#layer1" onclick="scrollToSection('layer1')">Three-js scene</a></li>
-                <li class="b"><a href="#threejs-container" onclick="scrollToSection('threejs-container')">Three-js scene</a></li>
-                <li class="c"><a href="#a" onclick="scrollToSection('a')">Praktische Erfahrung </a></li>
-                <li class="d"><a href="#containerbox" onclick="scrollToSection('containerbox')">Section 3</a></li>
-                <a class="v blink">Navigation</a> 
+                <li class="a"><a href="#a" onclick="scrollToSection('a')">Start</a></li>
+                <li class="b"><a href="#b" onclick="scrollToSection('b')">Three-js example</a></li>
+                <li class="c"><a href="#c" onclick="scrollToSection('c')">Praktische Erfahrung</a></li>
+                <li class="d"><a href="#d" onclick="scrollToSection('d')">Schule/Studium</a></li>
+                <li class="e"><a href="#e" onclick="scrollToSection('e')">Kontakt</a></li>
+                <li class="v blink">Navigation</li> 
 
                 <!-- <li class="a">Start</li>
                 <li class="b">Bewerbung</li>

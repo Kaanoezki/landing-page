@@ -1,7 +1,7 @@
 .navbar {
-  color: black;
-  box-shadow: 0 0 1px #000000;
-  text-shadow: 0 0 5px #000000;
+  color: #2e2e2e;
+  box-shadow: 0 0 1px #2e2e2e;
+  text-shadow: 0 0 5px #2e2e2e;
   font-family: 'Roboto Slab', sans-serif;
   position: fixed;
   top:5%;
@@ -35,10 +35,11 @@
   grid-auto-flow: row dense;
   
   grid-template-areas:
-    "a a v v"
-    "b b v v"
-    "c c v v"
-    "d d v v";
+    "a a  v"
+    "b b  v"
+    "c c  v"
+    "d d  v"
+    "e e  v";
 }
 
 .a { grid-area: a; }
@@ -58,7 +59,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:  #62fff5;
+
   width: 100%;
  
 }
@@ -79,9 +80,9 @@
   position: relative;
   font-size:large;
   background-color: #ffffff;
-  box-shadow: 0 0 5px #00ffff;
-  text-shadow: 0 0 5px #10c7ff;
-  transition: all 2s cubic-bezier(0.075, 0.81, 0.165, 1);
+  box-shadow: 0 0 5px #2e2e2e;
+
+  transition: all 4s cubic-bezier(0.075, 0.81, 0.165, 1);
   
 }
 .blink {
@@ -136,68 +137,4 @@
     
     background-color: rgba(255, 228, 196, 0.352)
 }
-}
-
-@media (max-width: 600px) {
-  .navbar .a,
-  .navbar .b,
-  .navbar .c,
-  .navbar .d {
-    display: flex;
-    font-size: xx-small;
-    transform: translate(-25%, -25%); /* Übersetzung für X- und Y-Achse */
-  }
-  .container{
-  min-width: 200px;
-  }
-  .navbar:hover{
-    transform: translateX(10px);
-    filter: opacity(1);
-  }
-  .v {
- 
-    z-index: 1;
-  }
-  .navbar .a:hover,
-  .navbar .b:hover,
-  .navbar .c:hover,
-  .navbar .d:hover {
-  
-    font-size: x-small;
-
-    transition: all 1s cubic-bezier(0.075, 0.81, 0.165, 1);
-  }
-  .navbar li:hover {
-    background-color: transparent;
-   
-    font-size: large;
-
-    transition: all 2s cubic-bezier(0.075, 0.81, 0.165, 1);
-    padding-right: 0;
-  }
-}
-@media (min-width: 601px) {
-  .navbar .a,
-  .navbar .b,
-  .navbar .c,
-  .navbar .d {
-    font-size: small; 
-  }
-  .navbar .v {
-    font-size: medium; 
-  }
-  .navbar li:hover {
-    font-size: medium; 
-  }
-  @media (min-width: 601px) and (max-width: 900px) {
-    .navbar .a,
-    .navbar .b,
-    .navbar .c,
-    .navbar .d {
-      font-size: x-small; 
-    }
-    .navbar li:hover {
-      font-size: small; 
-    }
-  }
 }
