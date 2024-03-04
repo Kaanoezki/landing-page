@@ -666,4 +666,14 @@
             transition: all 5s cubic-bezier(0.075, 0.81, 0.165, 1);
         }
     }
-
+    @media (max-height: 550px){
+        .square-container{
+            font-size: 0.8rem;
+         
+        }}
+        @media (max-height:350px){
+            .square-container{
+                font-size: 0.5rem;
+             
+            }}
+    
