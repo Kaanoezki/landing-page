@@ -141,7 +141,7 @@
     }
 
     #containerbox{
-        text-align: center;
+        /* text-align: center; */
         object-fit: cover;
         display: flex;
         align-items: center;
@@ -496,15 +496,22 @@
  
     .square-container {
         font-family: 'Roboto Slab', sans-serif;
-        font-size: 2em;
+        font-size: 3vh;
         position: absolute;
-        top: 40%;
-        left: 15%;
+        align-items: center;
+        justify-content: center;
+        top: 30%;
+        left: 10%;
         width: 70%;
         height: 30%;
+        max-width: 100%;
         background-color: #ffffff;
         z-index: 1; /* Hintergrund hinter den Text legen */
-    }
+        padding-left: 5%;
+        padding-top: 5%;
+        padding-right: 5%;
+        text-align: center; 
+        }
     .split-background {
         background-color: #e5e5f7;
         opacity: 0.2;
@@ -564,6 +571,10 @@
     height: 100%; 
     z-index: -1;
     position: absolute;
+    transition:3s;
+    }
+    .bg-dots:hover{
+       filter: saturate(1.5) brightness(1.2);
     }
     .animate2 {
         animation: moveBackground2 10s infinite linear;
@@ -612,10 +623,10 @@
     }
     @media (min-width: 1200px) { 
         .headliner{
-            font-size: 1.3rem !important;
+            font-size: 1.15rem !important;
             }  
         }
-    @media (max-width: 600px) {
+    @media (max-width: 600px) or (max-height: 80vh) {
         .square-container{
             font-size: 1rem;
             height: 20%;
@@ -629,6 +640,7 @@
             font-size: 1em;
             margin-right: 20%;
             margin-left: 20%;
+            display: flow-root;
         }
         .img-container{
             flex:4;
@@ -653,5 +665,5 @@
         .layer1{
             transition: all 5s cubic-bezier(0.075, 0.81, 0.165, 1);
         }
-
     }
+

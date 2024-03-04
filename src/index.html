@@ -18,8 +18,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+    <!--hammer.js für touch-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    
     <script>
-        
+    document.addEventListener("DOMContentLoaded", function () {
+    const container = document.body;
+    const sections = document.querySelectorAll(".snap");
+
+    let currentIndex = 0;
+
+    container.addEventListener("wheel", handleScroll, { passive: false });
+
+    const hammer = new Hammer(container);
+    hammer.get("swipe").set({ direction: Hammer.DIRECTION_VERTICAL });
+
+    hammer.on("swipeup swipedown", function (event) {
+        const deltaY = event.direction === Hammer.DIRECTION_DOWN ? -100 : 100;
+        handleScroll({ deltaY });
+    });
+
+    function handleScroll(event) {
+        currentIndex = (currentIndex + (event.deltaY > 0 ? 1 : -1) + sections.length) % sections.length;
+
+        sections[currentIndex].scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+
+        event.preventDefault();
+    }
+});    
     function disappearDiv() {
     var div = document.querySelector('.disappearing-div');
     div.classList.add('disappeared');
@@ -197,14 +223,14 @@ function handleScroll(event) {
         <div id="containerbox" class="BG-color1 ">
             <div class="split-background animate1"> </div>
             <div class=" square-container ">
-                <center>
+               
                     <b>Kontakt:</b>
                     <div >Kaan.oe.business@gmail.com</div>
                     <div>tel:0177/ 96 88 341</div>
                     <a href="https://www.linkedin.com/in/kaan-özkürkcü-4984bb1a2">www.linkedin.com/
                  in/kaan-özkürkcü
                   -4984bb1a2</a>
-                </center>
+           
             </div>
         </div>
       
@@ -218,7 +244,7 @@ function scrollToSection(sectionId) {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
-    
+
     </script>
     <!--navbar-->
     <nav>
@@ -244,6 +270,8 @@ function scrollToSection(sectionId) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js"></script>
     <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+
+
     <!-- <script src="https://unpkg.com/three@0.126.0/examples/js/postprocessing/EffectComposer.js"></script> -->
     <!--outliner script-->
 
