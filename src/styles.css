@@ -18,7 +18,7 @@
         scroll-snap-align: start;
     }
 
- 
+  
 
     #container {
         scrollbar-width:auto;
@@ -282,7 +282,10 @@
         background-image: url('/assets/bilder/icon\ \(2\).jpg');
         background-repeat: no-repeat;
         background-position: center center;
-       
+
+        border-width: 2rem;
+        padding: 0px;
+
         width: 50%;
         height: 50%;
         transition: 1s ease-in-out;
@@ -301,14 +304,15 @@
         transform: perspective(400px) var(--_t,rotatex(var(--_a)));
         transition: .5s;
         cursor: pointer;
-        
-    }
+        }
+
     .img1:hover{
         clip-path: inset(0 0 0 var(--_f) round var(--r));
     --_t: translateX(calc(-1*var(--_f))) rotateY(calc(-1*var(--_a)))
     transform:translatey(-15%);
         filter:contrast(1.3);
     }
+   
     .img2{
     
         background-image: url('../assets/bilder/assetPlacerTool.jpg');
@@ -443,6 +447,20 @@
         transition: 1s ease-in-out;
         z-index: 1; 
     }
+    .img12{
+    background-image:url(/assets/bilder/business-card.png);
+    background-repeat: no-repeat;
+    object-fit: fill;
+    background-position: center center;
+    width: 50%;
+    height:50%;
+    transition: 1s ease-in-out;
+    z-index: 5; 
+    }
+
+
+
+
     .img11:hover{
         
         transform:rotate3d(1,1,5,-15deg);
@@ -511,6 +529,7 @@
         padding-top: 5%;
         padding-right: 5%;
         text-align: center; 
+       
         }
     .split-background {
         background-color: #e5e5f7;
@@ -648,8 +667,18 @@
             margin: 1em;
             margin-top: 2rem;
             margin-bottom: 1rem;
-
         }
+        
+        .link-below-image {
+            margin-top: 1rem; /* Abstand zwischen Bild und Link anpassen */
+        }
+
+        .link-below-image a {
+            display: block; /* Link als Blockelement für volle Breite machen */
+        }
+
+
+
         .onclickbackground{
             min-height: 10px;
             background-color: wheat;
